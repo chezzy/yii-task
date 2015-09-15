@@ -7,7 +7,15 @@ return array(
 		'application.models.*',
 		'application.components.*',
 	),
-
+    'modules'=>array(
+            'gii'=>array(
+                    'class'=>'system.gii.GiiModule',
+                    'password'=>'',
+                // 'ipFilters'=>array(Есписок IPЕ),
+                // 'newFileMode'=>0666,
+                // 'newDirMode'=>0777,
+            ),
+    ),
 	'components'=>array(
 		'user' => array(
 			'allowAutoLogin' => true
