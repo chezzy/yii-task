@@ -4,6 +4,7 @@ class Tasks extends CActiveRecord
 {
 	public function tableName()
 	{
+        // '{{tasks}}' if isset prefix
 		return 'tasks';
 	}
 

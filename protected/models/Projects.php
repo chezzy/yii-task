@@ -59,6 +59,11 @@ class Projects extends CActiveRecord
 		);
 	}
 
+    //
+    // Retrieving the project metadata:
+    // number of tasks, number of complated tasks and percent of complate tasks
+    //
+
 	public function getNumberOfTasks()
 	{
 		return Tasks::model()->countByAttributes(array('project_id' => $this->id));
@@ -89,6 +94,11 @@ class Projects extends CActiveRecord
 		return parent::beforeSave();
 	}
 
+    /**
+     * Removing tasks when a project is deleted
+     *
+     * @return bool
+     */
 	public function beforeDelete()
 	{
 		Tasks::model()->deleteAllByAttributes(array('project_id' => $this->id));
