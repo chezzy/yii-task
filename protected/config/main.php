@@ -3,6 +3,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Task Application',
+	//'defaultController' => 'SiteController',
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
@@ -22,7 +23,7 @@ return array(
 		),
 		'urlManager'=>array(
 			'urlFormat'=>'path',
-			'showScriptName'=>false,
+			'showScriptName'=>true,
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
