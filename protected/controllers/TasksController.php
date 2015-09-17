@@ -48,7 +48,8 @@ class TasksController extends CController
 		$model = $this->loadModel($id);
 		$model->completed ^= 1;
 		$model->save();
-		$this->redirect($this->createUrl('/projects/tasks', array('id' => $id)));
+		//$this->redirect($this->createUrl('/projects/tasks', array('id' => $id)));
+        $this->redirect($this->createUrl('/projects'));
 	}
 
 	public function actionDelete($id)

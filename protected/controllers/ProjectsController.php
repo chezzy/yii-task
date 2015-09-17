@@ -59,6 +59,7 @@ class ProjectsController extends CController
         $model = $this->loadModel($id);
         $model->completed ^= 1;
         $model->save();
+
         $this->redirect($this->createUrl('/projects'));
     }
 
