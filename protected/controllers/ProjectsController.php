@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class ProjectsController
+ */
 class ProjectsController extends CController
 {
 	public $layout = 'main';
@@ -47,15 +50,24 @@ class ProjectsController extends CController
 		$this->render('save', array('model' => $model));
 	}
 
-	public function actionComplete($id)
-	{
-		$model = $this->loadModel($id);
-		$model->completed ^= 1;
-		$model->save();
-		$this->redirect($this->createUrl('/projects'));
-	}
+    /**
+     * @param $id
+     * @throws CHttpException
+     */
+    public function actionComplete($id)
+    {
+        $model = $this->loadModel($id);
+        $model->completed ^= 1;
+        $model->save();
+        $this->redirect($this->createUrl('/projects'));
+    }
 
-	public function actionTasks($id=NULL)
+    /**
+     * @param null $id
+     * @throws CException
+     * @throws CHttpException
+     */
+    public function actionTasks($id=NULL)
 	{
 		if ($id == NULL)
 			throw new CHttpException(400, 'Missing ID');
@@ -64,13 +76,15 @@ class ProjectsController extends CController
 		if ($project === NULL)
 			throw new CHttpException(400, 'No project with that ID exists');
 
+        $this->processPageRequest('page');
+
 		$model = new Tasks('search');
         $model->attributes = array('project_id' => $id);
 
         // Ajax request
         if (Yii::app()->request->isAjaxRequest)
         {
-            $this->renderPartial('tasks', array('model' => $model, 'project' => $project));
+            $this->renderPartial('_tasksAjax', array('model' => $model, 'project' => $project));
             Yii::app()->end();
         }
         else
@@ -88,6 +102,12 @@ class ProjectsController extends CController
 
 		throw new CHttpException('500', 'There was an error deleting the model.');
 	}
+
+    protected function processPageRequest($param='page')
+    {
+        if (Yii::app()->request->isAjaxRequest && isset($_POST[$param]))
+            $_GET[$param] = Yii::app()->request->getPost($param);
+    }
 
 	private function loadModel($id)
 	{
