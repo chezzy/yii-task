@@ -79,6 +79,7 @@ class Tasks extends CActiveRecord
 			'criteria'=>$criteria,
 			'pagination'=>array(
 				'pageSize'=>10,
+				'pageVar' =>'page',
 			),
 		));
 	}

@@ -35,10 +35,7 @@ class ProjectsController extends CController
 
 	public function actionSave($id=NULL)
 	{
-		if ($id == NULL)
-			$model = new Projects;
-		else
-			$model = $this->loadModel($id);
+        $model = ($id == null) ? new Projects() : $this->loadModel($id);
 
 		if (isset($_POST['Projects']))
 		{
@@ -104,7 +101,7 @@ class ProjectsController extends CController
 		throw new CHttpException('500', 'There was an error deleting the model.');
 	}
 
-    protected function processPageRequest($param='page')
+    protected function processPageRequest($param = 'page')
     {
         if (Yii::app()->request->isAjaxRequest && isset($_POST[$param]))
             $_GET[$param] = Yii::app()->request->getPost($param);

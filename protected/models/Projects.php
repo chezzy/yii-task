@@ -81,7 +81,7 @@ class Projects extends CActiveRecord
 
 		if ($numberOfTasks == 0)
 			return 100;
-		return round(($numberOfCompletedTasks / $numberOfTasks) * 100, 2);
+		return round(($numberOfCompletedTasks / $numberOfTasks) * 100, 1);
 	}
 
     /**

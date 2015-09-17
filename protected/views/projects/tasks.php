@@ -11,7 +11,6 @@
     'pager'=>array(
         'htmlOptions'=>array(
             'class'=>'paginator',
-            'header' => 'asdf',
         )
     ),
 ));
