@@ -26,6 +26,7 @@ class ProjectsController extends CController
 	public function actionIndex()
 	{
 		$model = new Projects('search');
+        //echo '<pre>'; print_r($model->search()); die;
         $this->render('index', array('model' => $model));
 	}
 
@@ -66,7 +67,16 @@ class ProjectsController extends CController
 		$model = new Tasks('search');
         $model->attributes = array('project_id' => $id);
 
-		$this->render('tasks', array('model' => $model, 'project' => $project));
+        // Ajax request
+        if (Yii::app()->request->isAjaxRequest)
+        {
+            $this->renderPartial('tasks', array('model' => $model, 'project' => $project));
+            Yii::app()->end();
+        }
+        else
+        {
+            $this->render('tasks', array('model' => $model, 'project' => $project));
+        }
 	}
 
 	public function actionDelete($id)

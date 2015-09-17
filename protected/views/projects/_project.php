@@ -1,3 +1,4 @@
+<?php // echo '<pre>'; print_r($data); die; ?>
 <div>
 	<div class="pull-left">
 		<p><strong><?php echo CHtml::link(CHtml::encode($data->name), $this->createUrl('/projects/tasks', array('id' => $data->id))); ?></strong></p>

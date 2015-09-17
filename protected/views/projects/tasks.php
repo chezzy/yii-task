@@ -4,5 +4,12 @@
 <?php $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$model->search(),
     'itemView'=>'_tasks',
+    'ajaxUpdate'=>true,
+    'template'=>"{items}\n{pager}",
+    'pager'=>array(
+        'htmlOptions'=>array(
+            'class'=>'paginator'
+        )
+    ),
 ));
 ?>

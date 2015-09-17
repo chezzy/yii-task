@@ -81,9 +81,14 @@ class Projects extends CActiveRecord
 
 		if ($numberOfTasks == 0)
 			return 100;
-		return ($numberOfCompletedTasks / $numberOfTasks) * 100;
+		return round(($numberOfCompletedTasks / $numberOfTasks) * 100, 2);
 	}
 
+    /**
+     * Automatically setting the created and updated time
+     *
+     * @return bool
+     */
 	public function beforeSave()
 	{
 		if ($this->isNewRecord)
