@@ -9,10 +9,12 @@
     'ajaxUpdate'=>false,
     'template'=>"{items}\n{pager}",
     'pager'=>array(
+        'header'=>'',   // text before it "Go to page:"
         'htmlOptions'=>array(
             'class'=>'paginator',
         )
     ),
+
 ));
 ?>
 </div>
@@ -20,11 +22,14 @@
 <?php if ($model->search()->totalItemCount > $model->search()->pagination->pageSize): ?>
 
     <!--<p id="loading" style="display:none"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/loading.gif" alt="" /></p>-->
-    <button id="loading" style="display:none" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+    <button id="loading" style="display:none" class="btn btn-lg btn-warning center-block"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
 
     <div class="container">
-        <p id="showMore" class="btn btn-primary pull-left">Show more...</p>
+        <div class="span12">
+            <p id="showMore" class="btn btn-primary center-block">Show more...</p>
+        </div>
     </div>
+
     <script type="text/javascript">
         /*<![CDATA[*/
         (function($)

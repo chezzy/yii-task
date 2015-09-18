@@ -25,10 +25,7 @@ class TasksController extends CController
 
 	public function actionSave($id=NULL)
 	{
-		if ($id == NULL)
-			$model = new Tasks;
-		else
-			$model = $this->loadModel($id);
+		$model = ($id == NULL) ? new Tasks : $this->loadModel($id);
 
 		if (isset($_GET['Tasks']))
 			$model->attributes = $_GET['Tasks'];

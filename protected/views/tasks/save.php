@@ -11,6 +11,7 @@
 		'role' => 'form'
 	)
 )); ?>
+
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="form-group">
@@ -23,7 +24,7 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'data', array('class' => 'col-sm-2 control-label')); ?>
 		<div class="col-sm-10">
-			<?php echo $form->textArea($model,'data', array('class' => 'form-control')); ?>
+			<?php echo $form->textArea($model, 'data', array('class' => 'form-control')); ?>
 		</div>
 	</div>
 
