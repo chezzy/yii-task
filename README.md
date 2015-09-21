@@ -23,3 +23,5 @@ Install the database
 
 php protected/yiic.php migrate up
 Once the database has been installed you can use the application.
+
+[![Join the chat at https://gitter.im/chezzy/yii-task](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/chezzy/yii-task?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
